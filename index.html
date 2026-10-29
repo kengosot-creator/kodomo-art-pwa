@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; connect-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>こどもの作品を飾る</title>
+<meta name="theme-color" content="#27352E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="作品を飾る">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+<style id="pageStyle">@page{size:A4 portrait;margin:0}</style>
+</head>
+<body>
+<header class="top">
+  <h1>こどもの作品を飾る</h1>
+  <p>写真はこの端末の中だけで処理します。外部には送信されません。</p>
+</header>
+
+<main class="app">
+  <section class="stage" aria-label="プレビュー">
+    <div class="sheet" id="sheet"><canvas id="preview" role="img" aria-label="作品集のプレビュー"></canvas></div>
+    <div class="actions">
+      <button class="btn primary" id="save" type="button" disabled>PNGで保存</button>
+      <button class="btn" id="print" type="button" disabled>印刷する</button>
+    </div>
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
+  </section>
+
+  <div class="controls">
+    <section class="card">
+      <h2>作品の写真 <span id="workCount"></span></h2>
+      <label class="btn primary filebtn">作品の写真を選ぶ
+        <input class="sr" id="workInput" type="file" accept="image/*" multiple>
+      </label>
+      <p class="note">複数まとめて選べます。あとから追加もできます。</p>
+      <ul class="thumbs" id="workList"></ul>
+      <p class="note" id="heroHint" hidden>「主役にする」を押した作品が大きく表示されます。</p>
+      <button class="btn small" id="clear" type="button" disabled>すべて外す</button>
+    </section>
+
+    <section class="card">
+      <h2>子どもの写真（なくてもOK）</h2>
+      <label class="btn filebtn"><span id="childLabel">子どもの写真を選ぶ</span>
+        <input class="sr" id="childInput" type="file" accept="image/*">
+      </label>
+      <ul class="thumbs" id="childList"></ul>
+    </section>
+
+    <section class="card">
+      <h2>タイトルと名前</h2>
+      <label class="field">作品集のタイトル<input id="title" type="text" maxlength="40" placeholder="例：ぼくのえほん"></label>
+      <label class="field">子どもの名前<input id="name" type="text" maxlength="30" placeholder="例：ゆうきくん"></label>
+      <label class="field">制作年月<input id="month" type="month"></label>
+    </section>
+
+    <section class="card">
+      <h2>レイアウト</h2>
+      <div class="seg" role="radiogroup" aria-label="レイアウト">
+        <label><input class="sr" type="radio" name="mode" value="even" checked><span>均等</span></label>
+        <label><input class="sr" type="radio" name="mode" value="hero"><span>主役</span></label>
+        <label><input class="sr" type="radio" name="mode" value="gallery"><span>ギャラリー</span></label>
+      </div>
+      <h2 class="sp">用紙の向き（A4）</h2>
+      <div class="seg" role="radiogroup" aria-label="用紙の向き">
+        <label><input class="sr" type="radio" name="orient" value="portrait" checked><span>縦</span></label>
+        <label><input class="sr" type="radio" name="orient" value="landscape"><span>横</span></label>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="printArea" aria-hidden="true"><img id="printImg" alt=""></div>
+<script src="layout.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
