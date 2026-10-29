@@ -1,0 +1,16 @@
+{
+  "name": "こどもの作品を飾る",
+  "short_name": "作品を飾る",
+  "description": "子どもの作品写真をA4にレイアウトして、印刷・PNG保存できます。写真は端末の外に送信されません。",
+  "lang": "ja",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#E9EDE6",
+  "theme_color": "#27352E",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
